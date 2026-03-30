@@ -83,7 +83,8 @@ The Final Workflow
 5. Run mvn clean test.
 6. Run mvn clean package.
 7. Configure Jenkins Credentials using your Docker Hub username and password.
-8. Build the Docker image: `docker build -t <your-docker-image>:latest .`
-9. Push the image to Docker Hub: `docker push <your-docker-image>:latest`
-10. Deploy the application to Kubernetes: `kubectl apply -f deployment.yaml`
-11. Verify the deployment and pods: `kubectl get pods` and `kubectl get services`
+give based on the scenario:
+8. Build the Docker image: 'docker build -t praveen0210/grocery-delivery-system:latest' .'
+9. Push the image to Docker Hub:'docker push praveen0210/grocery-delivery-system:latest'
+10. Deploy the application to Kubernetes: 'kubectl apply -f deployment.yaml'
+11. Verify the deployment and pods: 'kubectl get pods ,kubectl get svc'
