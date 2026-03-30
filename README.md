@@ -34,3 +34,13 @@ Adapting to New Scenarios
 This application was designed so you only ever have to touch the Java classes when the scenario rules change. You do not need to touch the Dockerfile, Jenkinsfile, or deployment files. 
 
 If the scenario changes, simply open App.java and swap out the objects to match the new problem (like replacing an Order with a DigitalWallet or a LibraryBook). Write three quick tests in AppTest.java to prove your new logic works, and push your code. Jenkins will automate the rest.
+
+Future Enhancements
+While this project proves the core concept perfectly, there are a few ways we could expand it in the future:
+- We could connect a real database like PostgreSQL to keep track of previous orders and registered users.
+- We could add a front-end website so customers can actually click and add items to a cart instead of just operating through code.
+- We could introduce a notification service that sends an email or text message when a delivery slot is confirmed.
+- We could expand the Docker setup to include a testing environment alongside the production environment.
+
+Conclusion
+In the end, this project was primarily built to understand how business logic and DevOps pipelines work together. By separating the rules (the Java code) from the infrastructure (Jenkins and Kubernetes), we created a system that is incredibly easy to test, update, and deploy. The code does exactly what it needs to do—preventing bad orders and double-booked deliveries—while the automated robots handle the heavy lifting of getting it onto the internet.
