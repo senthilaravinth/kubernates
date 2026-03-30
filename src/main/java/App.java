@@ -4,7 +4,7 @@ public class App {
         System.out.println("Delivery System running...");
         try {
             while (true) {
-                Thread.sleep(10000); 
+                Thread.sleep(10000);
             }
         } catch (InterruptedException e) {
             System.err.println("Application interrupted.");
@@ -31,7 +31,7 @@ public class App {
         if (order == null) {
             return false;
         }
-        
+
         // check minimum amount is 10
         return order.totalAmount >= 10.0;
     }
@@ -40,7 +40,7 @@ public class App {
         if (slot == null) {
             return false;
         }
-        
+
         // check if slot is already booked
         return !slot.isBooked;
     }
