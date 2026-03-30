@@ -21,18 +21,7 @@ Architecture Overview: A Simple Journey
 - The Manager (Kubernetes): The container is handed to Kubernetes, which acts as the orchestrator to keep multiple copies of the app healthy and alive on the internet.
 
 Project Structure
-simple-java-app/
-├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── App.java          <-- Contains Domain Models, Logic, and Main method
-│   └── test/
-│       └── java/
-│           └── AppTest.java      <-- Contains all JUnit (5 tests cases)
-├── pom.xml                       <-- Configured to build App.java as the main executable
-├── Dockerfile                    <-- Containerizes the compiled App class
-├── deployment.yaml               <-- Defines the Kubernetes Deployment and Service
-└── Jenkinsfile                   <-- Kept to retain your CI/CD pipeline capabilities
+![alt text](image.png)
 
 - src/main/java/App.java: The core application containing our data models and validation rules.
 - src/test/java/AppTest.java: The automated JUnit test suite that proves our logic is secure.
