@@ -50,4 +50,4 @@ Future Enhancements
 Conclusion
 In the end, this project was primarily built to understand how business logic and DevOps pipelines work together. By separating the rules (the Java code) from the infrastructure (Jenkins and Kubernetes), we created a system that is incredibly easy to test, update, and deploy. The code does exactly what it needs to do—preventing bad orders and double-booked deliveries—while the automated robots handle the heavy lifting of getting it onto the internet.
 
-Sourced From ChatGPT
+Outsourced From ChatGPT 
