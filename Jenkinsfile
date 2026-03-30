@@ -1,30 +1,22 @@
 pipeline {
     agent any
 
-    /*
-     * Make sure you have Maven configured in Jenkins Global Tool Configuration
-     * with the name 'Maven'. Or you can use a docker container as agent.
-     */
-    tools {
-        maven 'Maven'
+    environment {
+        DOCKER_IMAGE = "praveen0210/grocery-delivery-system:latest"
     }
 
     stages {
-        stage('Checkout') {
+
+        stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/praveenrajt0413/Online-grocery-application.git'
+                git branch: 'main',
+                    url: 'https://github.com/praveenrajt0413/Online-grocery-application.git'
             }
         }
 
-        stage('Build & Test') {
+        stage('Build & Run Tests') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'mvn clean package'
-                    } else {
-                        bat 'mvn clean package'
-                    }
-                }
+                bat 'mvn clean test'
             }
             post {
                 always {
@@ -33,31 +25,37 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
+        stage('Package Application') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'docker build -t grocery-delivery-system:latest .'
-                    } else {
-                        bat 'docker build -t grocery-delivery-system:latest .'
-                    }
+                bat 'mvn package -DskipTests'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat "docker build -t %DOCKER_IMAGE% ."
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    bat """
+                        docker login -u %DOCKER_USER% -p %DOCKER_PASS%
+                        docker push %DOCKER_IMAGE%
+                    """
                 }
             }
         }
 
-        /* 
-        NOTE: You will need valid kubeconfig on your Jenkins server to run this step 
         stage('Deploy to Kubernetes') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'kubectl apply -f deployment.yaml'
-                    } else {
-                        bat 'kubectl apply -f deployment.yaml'
-                    }
-                }
+                bat 'kubectl apply -f deployment.yaml'
             }
         }
-        */
     }
 }
