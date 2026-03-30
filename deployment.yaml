@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grocery-delivery-app-deployment
+  name: delivery-system-deployment
   labels:
-    app: grocery-delivery-app
+    app: delivery-system
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: grocery-delivery-app
+      app: delivery-system
   template:
     metadata:
       labels:
-        app: grocery-delivery-app
+        app: delivery-system
     spec:
       containers:
-      - name: grocery-delivery-app
-        image: praveen0210/grocery-delivery-system:latest
+      - name: delivery-system
+        image: praveen0210/delivery-system:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -41,11 +41,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: grocery-delivery-app-service
+  name: delivery-system-service
 spec:
   type: NodePort
   selector:
-    app: grocery-delivery-app
+    app: delivery-system
   ports:
     - protocol: TCP
       port: 80

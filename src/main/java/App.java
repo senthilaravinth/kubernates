@@ -4,7 +4,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Online Grocery Delivery System running...");
+        System.out.println("Delivery System running...");
         try {
             while (true) {
                 Thread.sleep(10000);
