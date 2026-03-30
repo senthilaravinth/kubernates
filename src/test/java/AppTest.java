@@ -6,21 +6,19 @@ public class AppTest {
     @Test
     public void testOrderAboveMinimum() {
         App app = new App();
-        App.Order order = new App.Order(15.0); // $15 is greater than $10
+        App.Order order = new App.Order(15.0); 
         
         boolean result = app.isValid(order);
-        
-        assertTrue(result); // We expect this to be true
+        assertTrue(result); 
     }
 
     @Test
     public void testOrderBelowMinimum() {
         App app = new App();
-        App.Order order = new App.Order(5.0); // $5 is less than $10
+        App.Order order = new App.Order(5.0); 
         
         boolean result = app.isValid(order);
-        
-        assertFalse(result); // We expect this to be false
+        assertFalse(result); 
     }
 
     @Test
@@ -28,7 +26,6 @@ public class AppTest {
         App app = new App();
         
         boolean result = app.isValid(null);
-        
-        assertFalse(result); // We expect this to safely return false
+        assertFalse(result); 
     }
 }

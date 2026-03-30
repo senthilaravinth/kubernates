@@ -4,15 +4,13 @@ public class App {
         System.out.println("Delivery System running...");
         try {
             while (true) {
-                Thread.sleep(10000); // Keeps the app running for Docker
+                Thread.sleep(10000); 
             }
         } catch (InterruptedException e) {
             System.err.println("Application interrupted.");
         }
     }
 
-    // --- DOMAIN MODEL (The Noun) ---
-    // We only keep one simple object: an Order with just an amount.
     public static class Order {
         public double totalAmount;
 
@@ -21,13 +19,12 @@ public class App {
         }
     }
 
-    // --- BUSINESS LOGIC (The Verb) ---
-    // We only have one simple rule: an order must be at least $10.0
     public boolean isValid(Order order) {
         if (order == null) {
             return false;
         }
         
+        // check minimum amount is 10
         if (order.totalAmount >= 10.0) {
             return true;
         } else {
