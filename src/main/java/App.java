@@ -32,7 +32,6 @@ public class App {
             return false;
         }
 
-        // check minimum amount is 10
         return order.totalAmount >= 10.0;
     }
 
@@ -41,7 +40,6 @@ public class App {
             return false;
         }
 
-        // check if slot is already booked
         return !slot.isBooked;
     }
 }
