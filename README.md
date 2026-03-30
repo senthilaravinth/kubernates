@@ -7,6 +7,15 @@ This project serves as the automated "brain" solving those problems. We built a 
 
 More importantly, we wrapped this logic inside a continuous integration pipeline. This means that anytime a developer updates the code, the system automatically checks it against your rules, packages it, and pushes it to a live Kubernetes cluster without any human error.
 
+Architecture Overview: A Simple Journey
+Our entire project follows a very simple, linear journey from the developer's laptop to being live on the internet:
+
+- The Logic (Java): The developer writes the core business rules and uses Maven to run the local tests.
+- The Cloud Vault (GitHub): Once the code works perfectly on their machine, they push it up to GitHub for safekeeping.
+- The Automated Brain (Jenkins): Jenkins is constantly watching GitHub. The second it sees new code, it pulls it down and runs the strict JUnit test suite to guarantee the code isn't broken.
+- The Shipping Container (Docker): Once the tests pass, Jenkins hands the code over to Docker. Docker seals the app inside a lightweight, portable digital "container" so it runs flawlessly on any server.
+- The Manager (Kubernetes): Finally, the Docker container is handed to Kubernetes. Kubernetes acts as the orchestrator, deploying multiple copies of the app and keeping them healthy and alive on the internet.
+
 Project Structure
 There are two main halves to this project: the Java core and the deployment pipeline.
 
