@@ -9,7 +9,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git branch: 'main',
+                git branch: 'other-dependencies',
                     url: 'https://github.com/praveenrajt0413/Online-grocery-application.git'
             }
         }
