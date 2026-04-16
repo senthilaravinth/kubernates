@@ -16,8 +16,9 @@ spec:
     spec:
       containers:
       - name: delivery-system
+        # This MUST match the IMAGE_NAME in your pipeline
         image: 23mis0086/simplejava:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         resources:
